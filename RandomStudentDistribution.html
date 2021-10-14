@@ -22,6 +22,9 @@ $(document).ready(function(){
   $("#listCountries").on('change', function(){
 		BindPlayers();
   });
+  $("#btnReset").click(function(){
+		Reset();
+  });
   
   BindDefaultData();
 });
@@ -31,24 +34,30 @@ $(document).ready(function(){
 
 <div class="d-flex h-100">
   <div>
-	Countries:
-	<select id="listCountries"></select >
-	<input type="text" id="txtCountry" name="txtCountry">
-	<button id="btnAddCountry">
-	  Add country
-	</button>
-  </div>
-  <div>
-	Players:
-	<div id="divPlayers"></div>
-	<input type="text" id="txtPlayer" name="txtPlayer">
-	<button id="btnAddPlayer">
-	  Add player
-	</button>
-  </div>
-  <div>
+	<div>
+		Countries:
+		<select id="listCountries"></select >
+		<input type="text" id="txtCountry" name="txtCountry">
+		<button id="btnAddCountry">
+		  Add country
+		</button>
+		Max number of players per Country: <input type="number" id="txtMaxPlayers" name="txtMaxPlayrs" value="6">
+	</div>
+	<div>
+		Players:
+		<div id="divPlayers"></div>
+		<input type="text" id="txtPlayer" name="txtPlayer">
+		<button id="btnAddPlayer">
+		  Add player
+		</button>
+	  </div>
+  </div>  
+  <div>	
     <button id="btnDistribute">
 	  Distribute & Show
+	</button>
+	<button id="btnReset">
+	  Reset
 	</button>
   </div>
   <div id="divResults">

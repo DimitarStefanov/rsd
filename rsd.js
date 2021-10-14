@@ -4,7 +4,7 @@ var teams = [];
 var arrayIndex = [];
 var countriesLength = 0;
 var playersLength = 0;
-var maxPayersPerCountry = 6;
+var maxPayersPerCountry = $("#txtMaxPlayers").val();
 
 function BindDefaultData() {
 	
@@ -17,6 +17,7 @@ function BindDefaultData() {
 }
 
 function DistributeTeamPlayers() {
+	maxPayersPerCountry = $("#txtMaxPlayers").val();
 	for(var i = 0; i < teams.length; i++) {		
 		while(teams[i].players.length < maxPayersPerCountry) {
 			
@@ -29,7 +30,14 @@ function DistributeTeamPlayers() {
 			
 			var country = availableCountries.pop();
 			
-			teams[i].players.push(country.players[country.usedPlayersCount]);
+			for(var p = 0; p < teams[i].players.length; p++) {
+				if(teams[i].players[p].country == country.name){
+					availableCountries.unshift(country);
+					country = availableCountries.pop();
+				}
+			}
+			
+			teams[i].players.push({ name: country.players[country.usedPlayersCount].name, country: country.name});
 			for(var c = 0; c < countriesLength; c++){
 				if(countries[c].name == country.name){
 					countries[c].usedPlayersCount++;
@@ -93,6 +101,7 @@ function AddCountry() {
 function AddPlayer() {
 	var selectedCountryName = $("#listCountries").val();
 	var country = $.grep(countries, function(obj){ return obj.name === selectedCountryName; })[0];
+	maxPayersPerCountry = $("#txtMaxPlayers").val();
 	if(country.players.length < maxPayersPerCountry) {
 		var playerName = $("#txtPlayer").val();	
 		var player = { name: playerName};
@@ -100,7 +109,7 @@ function AddPlayer() {
 		$('#divPlayers').append("<div>" + playerName + "</div>");
 	}
 	else{
-		alert('You are not allowed to enter more than 6 players per country.');
+		alert('You are not allowed to enter more than ' + maxPayersPerCountry + ' players per country.');
 	}
 }
 
@@ -111,4 +120,10 @@ function BindPlayers() {
 	for(var i = 0; i < country.players.length; i++) {
 		$('#divPlayers').append("<div>" + country.players[i].name + "</div>");
 	}
+}
+
+function Reset(){
+	countries = [];
+	$('#listCountries').html('');
+	$('#divPlayers').html('');
 }

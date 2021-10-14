@@ -5,7 +5,7 @@ var arrayIndex = [];
 var countriesLength = 0;
 var playersLength = 0;
 var maxPayersPerCountry = $("#txtMaxPlayers").val();
-var teamNames = ["Lao Tzu", "Confucius", "Seneca", "Aristotle", "Socrates", "Plato", "Hypatia", "Marcus Aurelius", "Thomas Aquinas", "Giordano Bruno", "John Locke", "Voltaire", "David Hume", "Immanuel Kant", "Arthur Schopenhauer", "Henry David Thoreau", "Soren Kierkegaard", "Friedrich Nietzsche", "Sigmund Freud", "Rudolf Steiner", "Ludwig Wittgenstein", "Albert Camus", "Alan Watts"]
+var teamNames = [];
 
 function Init() {
 	$("#btnDistribute").click(function(){
@@ -33,7 +33,9 @@ function Init() {
 
 function BindDefaultData() {
 	
-	countries = [ {name: "Slovenia", usedPlayersCount:0, players: [ {name: 'Slovenia 1'}, {name: 'Slovenia 2'}, {name: 'Slovenia 3'}, {name: 'Slovenia 4'}, {name:'Slovenia 5'}, {name: 'Slovenia 6'}]}, {name: "Portugal", usedPlayersCount:0, players: [ {name: 'Portugal 1'}, {name: 'Portugal 2'}, {name: 'Portugal 3'}, {name: 'Portugal 4'}, {name: 'Portugal 5'}, {name: 'Portugal 6'}]}, {name: "France", usedPlayersCount:0, players: [{name: 'France 1'}, {name: 'France 2'}, {name: 'France 3'}, {name: 'France 4'}, {name: 'France 5'}, {name: 'France 6'}]}, {name: "Poland", usedPlayersCount:0, players: [{name: 'Poland 1'}, {name: 'Poland 2'}, {name:  'Poland 3'}, {name: 'Poland 4'}, {name: 'Poland 5'}, {name: 'Poland 6'}]}, {name: "Belgium", usedPlayersCount:0, players: [{name: 'Belgium 1'}, {name: 'Belgium 2'}, {name: 'Belgium 3'}, {name: 'Belgium 4'}, {name: 'Belgium 5'}, {name: 'Belgium 6'}]}, {name: "Germany", usedPlayersCount:0, players: [{name: 'Germany 1'}, {name: 'Germany 2'}, {name: 'Germany 3'}, {name: 'Germany 4'}, {name: 'Germany 5'}, {name: 'Germany 6'}]}, {name: "Austria", usedPlayersCount:0, players: [{name: 'Austria 1'}, {name: 'Austria 2'}, {name: 'Austria 3'}, {name: 'Austria 4'}, {name: 'Austria 5'}, {name: 'Austria 6'}]}, {name: "Bulgaria", usedPlayersCount:0, players: [{name: 'Bulgaria 1'}, {name: 'Bulgaria 2'}, {name: 'Bulgaria 3'}, {name: 'Bulgaria 4'}, {name: 'Bulgaria 5'}, {name: 'Bulgaria 6'}]}, {name: "Spain", usedPlayersCount:0, players: [{name: 'Spain 1'}, {name: 'Spain 2'}, {name: 'Spain 3'}, {name: 'Spain 4'}, {name: 'Spain 5'}, {name: 'Spain 6'}]}, {name: "Cyprus", usedPlayersCount:0, players: [{name: 'Cyprus 1'}, {name: 'Cyprus 2'}, {name: 'Cyprus 3'}, {name: 'Cyprus 4'}, {name: 'Cyprus 5'}, {name: 'Cyprus 6'}]}, {name: "Hungary", usedPlayersCount:0, players: [{name: 'Hungary 1'}, {name: 'Hungary 2'}, {name: 'Hungary 3'}, {name: 'Hungary 4'}, {name: 'Hungary 5'}, {name: 'Hungary 6'}]}, {name: "Greece", usedPlayersCount:0, players: [{name: 'Greece 1'}, {name: 'Greece 2'}, {name: 'Greece 3'}, {name: 'Greece 4'}, {name: 'Greece 5'}, {name: 'Greece 6'}]}, {name: "Italy", usedPlayersCount:0, players: [{name: 'Italy 1'}, {name: 'Italy 2'}, {name: 'Italy 3'}, {name: 'Italy 4'}, {name: 'Italy 5'}, {name: 'Italy 6'}]} ];
+	countries = [ {name: "Slovenia", usedPlayersCount:0, players: [ {name: 'Slovenia 1', id: 1}, {name: 'Slovenia 2', id: 2}, {name: 'Slovenia 3', id: 3}, {name: 'Slovenia 4', id: 4}, {name:'Slovenia 5', id: 5}, {name: 'Slovenia 6', id: 6}]}, {name: "Portugal", usedPlayersCount:0, players: [ {name: 'Portugal 1', id: 1}, {name: 'Portugal 2', id: 2}, {name: 'Portugal 3', id: 3}, {name: 'Portugal 4', id: 4}, {name: 'Portugal 5', id: 5}, {name: 'Portugal 6', id: 6}]}, {name: "France", usedPlayersCount:0, players: [{name: 'France 1', id: 1}, {name: 'France 2', id: 2}, {name: 'France 3', id: 3}, {name: 'France 4', id: 4}, {name: 'France 5', id: 5}, {name: 'France 6', id: 6}]}, {name: "Poland", usedPlayersCount:0, players: [{name: 'Poland 1', id: 1}, {name: 'Poland 2', id: 2}, {name:  'Poland 3', id: 3}, {name: 'Poland 4', id: 4}, {name: 'Poland 5', id: 5}, {name: 'Poland 6', id: 6}]}, {name: "Belgium", usedPlayersCount:0, players: [{name: 'Belgium 1', id: 1}, {name: 'Belgium 2', id: 2}, {name: 'Belgium 3', id: 3}, {name: 'Belgium 4', id: 4}, {name: 'Belgium 5', id: 5}, {name: 'Belgium 6', id: 6}]}, {name: "Germany", usedPlayersCount:0, players: [{name: 'Germany 1', id: 1}, {name: 'Germany 2', id: 2}, {name: 'Germany 3', id: 3}, {name: 'Germany 4', id: 4}, {name: 'Germany 5', id: 5}, {name: 'Germany 6', id: 6}]}, {name: "Austria", usedPlayersCount:0, players: [{name: 'Austria 1', id: 1}, {name: 'Austria 2', id: 2}, {name: 'Austria 3', id: 3}, {name: 'Austria 4', id: 4}, {name: 'Austria 5', id: 5}, {name: 'Austria 6', id: 6}]}, {name: "Bulgaria", usedPlayersCount:0, players: [{name: 'Bulgaria 1', id: 1}, {name: 'Bulgaria 2', id: 2}, {name: 'Bulgaria 3', id: 3}, {name: 'Bulgaria 4', id: 4}, {name: 'Bulgaria 5', id: 5}, {name: 'Bulgaria 6', id: 6}]}, {name: "Spain", usedPlayersCount:0, players: [{name: 'Spain 1', id: 1}, {name: 'Spain 2', id: 2}, {name: 'Spain 3', id: 3}, {name: 'Spain 4', id: 4}, {name: 'Spain 5', id: 5}, {name: 'Spain 6', id: 6}]}, {name: "Cyprus", usedPlayersCount:0, players: [{name: 'Cyprus 1', id: 1}, {name: 'Cyprus 2', id: 2}, {name: 'Cyprus 3', id: 3}, {name: 'Cyprus 4', id: 4}, {name: 'Cyprus 5', id: 5}, {name: 'Cyprus 6', id: 6}]}, {name: "Hungary", usedPlayersCount:0, players: [{name: 'Hungary 1', id: 1}, {name: 'Hungary 2', id: 2}, {name: 'Hungary 3', id: 3}, {name: 'Hungary 4', id: 4}, {name: 'Hungary 5', id: 5}, {name: 'Hungary 6', id: 6}]}, {name: "Greece", usedPlayersCount:0, players: [{name: 'Greece 1', id: 1}, {name: 'Greece 2', id: 2}, {name: 'Greece 3', id: 3}, {name: 'Greece 4', id: 4}, {name: 'Greece 5', id: 5}, {name: 'Greece 6', id: 6}]}, {name: "Italy", usedPlayersCount:0, players: [{name: 'Italy 1', id: 1}, {name: 'Italy 2', id: 2}, {name: 'Italy 3', id: 3}, {name: 'Italy 4', id: 4}, {name: 'Italy 5', id: 5}, {name: 'Italy 6', id: 6}]} ];
+	
+	teamNames =  ["Lao Tzu", "Confucius", "Seneca", "Aristotle", "Socrates", "Plato", "Hypatia", "Marcus Aurelius", "Thomas Aquinas", "Giordano Bruno", "John Locke", "Voltaire", "David Hume", "Immanuel Kant", "Arthur Schopenhauer", "Henry David Thoreau", "Soren Kierkegaard", "Friedrich Nietzsche", "Sigmund Freud", "Rudolf Steiner", "Ludwig Wittgenstein", "Albert Camus", "Alan Watts"];
 	
 	for(var i = 0; i< countries.length; i++) {
 		$('#listCountries').append("<option value=" + countries[i].name + ">" + countries[i].name + "</option>");
@@ -139,7 +141,7 @@ function AddPlayer() {
 	maxPayersPerCountry = $("#txtMaxPlayers").val();
 	if(country.players.length < maxPayersPerCountry) {
 		var playerName = $("#txtPlayer").val();	
-		var player = { name: playerName};
+		var player = { name: playerName, id: (country.players.length+1)};
 		country.players.push(player);
 		$('#divPlayers').append("<div>" + playerName + "</div>");
 	}
@@ -152,8 +154,9 @@ function BindPlayers() {
 	var selectedCountryName = $("#listCountries").val();
 	var country = $.grep(countries, function(obj){ return obj.name === selectedCountryName; })[0];
 	$('#divPlayers').html('');
-	for(var i = 0; i < country.players.length; i++) {
-		$('#divPlayers').append("<div>" + country.players[i].name + "</div>");
+	var players = country.players.sort( function( a, b ) { return a.id - b.id });
+	for(var i = 0; i < players.length; i++) {
+		$('#divPlayers').append("<div>" + players[i].name + "</div>");
 	}
 }
 

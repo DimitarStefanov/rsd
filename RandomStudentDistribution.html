@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<script src="jquery-3.6.0.min.js"></script>
+<script src="rsd.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btnDistribute").click(function(){
+		DistributePlayers();
+		ShowPlayers();
+  });
+  $("#btnShow").click(function(){
+		ShowPlayers();
+  });
+  $("#btnAddCountry").click(function(){
+		AddCountry();
+  });
+  $("#btnAddPlayer").click(function(){
+		AddPlayer();
+  });
+  $("#listCountries").on('change', function(){
+		BindPlayers();
+  });
+  
+  BindDefaultData();
+});
+</script>
+</head>
+<body>
+
+<div class="d-flex h-100">
+  <div>
+	Countries:
+	<select id="listCountries"></select >
+	<input type="text" id="txtCountry" name="txtCountry">
+	<button id="btnAddCountry">
+	  Add country
+	</button>
+  </div>
+  <div>
+	Players:
+	<div id="divPlayers"></div>
+	<input type="text" id="txtPlayer" name="txtPlayer">
+	<button id="btnAddPlayer">
+	  Add player
+	</button>
+  </div>
+  <div>
+    <button id="btnDistribute">
+	  Distribute & Show
+	</button>
+  </div>
+  <div id="divResults">
+  </div>
+</div>
+
+</body>
+</html>

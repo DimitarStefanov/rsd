@@ -4,29 +4,10 @@
 <title>Page Title</title>
 <script src="jquery-3.6.0.min.js"></script>
 <script src="rsd.js"></script>
+<link rel="stylesheet" href="rsd.css">
 <script>
-$(document).ready(function(){
-  $("#btnDistribute").click(function(){
-		DistributePlayers();
-		ShowPlayers();
-  });
-  $("#btnShow").click(function(){
-		ShowPlayers();
-  });
-  $("#btnAddCountry").click(function(){
-		AddCountry();
-  });
-  $("#btnAddPlayer").click(function(){
-		AddPlayer();
-  });
-  $("#listCountries").on('change', function(){
-		BindPlayers();
-  });
-  $("#btnReset").click(function(){
-		Reset();
-  });
-  
-  BindDefaultData();
+$(document).ready(function() {
+	Init();
 });
 </script>
 </head>

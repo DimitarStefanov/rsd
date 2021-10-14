@@ -53,8 +53,10 @@ function GetRandomOrder(i, arrayIndex) {
 
 function DistributePlayers() {
 	countriesLength = countries.length;
-	playersLength = countries[0].players.length;	
+	teams = [];	
+	arrayIndex = [];
 	for(var i = 0; i < countriesLength; i++) {
+		countries[i].usedPlayersCount = 0;
 		var team = { name: "Team " + (i+1), players: []  }
 		teams.push(team);
 		arrayIndex.push(i);

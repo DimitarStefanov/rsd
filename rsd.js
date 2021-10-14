@@ -5,6 +5,7 @@ var arrayIndex = [];
 var countriesLength = 0;
 var playersLength = 0;
 var maxPayersPerCountry = $("#txtMaxPlayers").val();
+var teamNames = ["Lao Tzu", "Confucius", "Seneca", "Aristotle", "Socrates", "Plato", "Hypatia", "Marcus Aurelius", "Thomas Aquinas", "Giordano Bruno", "John Locke", "Voltaire", "David Hume", "Immanuel Kant", "Arthur Schopenhauer", "Henry David Thoreau", "Søren Kierkegaard", "Friedrich Nietzsche", "Sigmund Freud", "Rudolf Steiner", "Ludwig Wittgenstein", "Albert Camus", "Alan Watts"]
 
 function Init() {
 	$("#btnDistribute").click(function(){
@@ -86,10 +87,11 @@ function GetRandomOrder(i, arrayIndex) {
 function DistributePlayers() {
 	countriesLength = countries.length;
 	teams = [];	
-	arrayIndex = [];
+	arrayIndex = [];	
+	teamNames = GetRandomOrder(teamNames.length, teamNames);
 	for(var i = 0; i < countriesLength; i++) {
 		countries[i].usedPlayersCount = 0;
-		var team = { name: "Team " + (i+1), players: []  }
+		var team = { name: "Team " + teamNames[i], players: []  }
 		teams.push(team);
 		arrayIndex.push(i);
 	}
@@ -99,19 +101,27 @@ function DistributePlayers() {
 
 function ShowPlayers() {
 	$('#divResults').html('');
+	arrayIndex = GetRandomOrder(countriesLength, arrayIndex);
 	for(var i = 0; i < countriesLength; i++){
 		var cont = document.getElementById('divResults');
 		
+		var div = document.createElement('div');
+		div.className = "col-4";
+		
 		var ul = document.createElement('ul');
+		var span = document.createElement('span');
+		span.innerHTML = teams[arrayIndex[i]].name
     
-		$('#divResults').append(teams[i].name);
-		for(var j = 0; j < teams[i].players.length; j++){
+		div.appendChild(span);
+		for(var j = 0; j < teams[arrayIndex[i]].players.length; j++){
 			var li = document.createElement('li');
-			li.innerHTML = teams[i].players[j].name;
+			li.innerHTML = teams[arrayIndex[i]].players[j].name;
 	
 			ul.appendChild(li);  
 		}
-		cont.appendChild(ul);
+		
+		div.appendChild(ul);
+		cont.appendChild(div);
 	}
 }
 

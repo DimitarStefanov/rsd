@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+<title>Random Student Distribution</title>
 <script src="jquery-3.6.0.min.js"></script>
 <script src="rsd.js"></script>
-<link rel="stylesheet" href="rsd.css">
+<link href="rsd.css" rel="stylesheet">
+<link href="bootstrap.min.css" rel="stylesheet">
+
 <script>
 $(document).ready(function() {
 	Init();
@@ -13,35 +15,35 @@ $(document).ready(function() {
 </head>
 <body>
 
-<div class="d-flex h-100">
-  <div>
-	<div>
+<div class="container">
+  <div class="mt-2">
+	<div id="divCountriesContainer" class="mt-2">
 		Countries:
 		<select id="listCountries"></select >
 		<input type="text" id="txtCountry" name="txtCountry">
-		<button id="btnAddCountry">
+		<button id="btnAddCountry" class="btn btn-primary">
 		  Add country
 		</button>
-		Max number of players per Country: <input type="number" id="txtMaxPlayers" name="txtMaxPlayrs" value="6">
+		Max number of players per Country: <input type="number" id="txtMaxPlayers" name="txtMaxPlayers" value="6">		
 	</div>
-	<div>
+	<div id="divPlayersContainer" class="mt-2">
 		Players:
 		<div id="divPlayers"></div>
 		<input type="text" id="txtPlayer" name="txtPlayer">
-		<button id="btnAddPlayer">
+		<button id="btnAddPlayer" class="btn btn-primary">
 		  Add player
 		</button>
 	  </div>
   </div>  
-  <div>	
-    <button id="btnDistribute">
+  <div id="divCountriesContainer" class="mt-2">	
+    <button id="btnDistribute" class="btn btn-primary">
 	  Distribute & Show
 	</button>
-	<button id="btnReset">
+	<button id="btnReset" class="btn btn-primary">
 	  Reset
 	</button>
   </div>
-  <div id="divResults">
+  <div id="divResults" class="mt-2 row">
   </div>
 </div>
 

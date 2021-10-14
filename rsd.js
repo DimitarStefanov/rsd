@@ -94,6 +94,8 @@ function DistributePlayers() {
 		var team = { name: teamNames[i], players: []  }
 		teams.push(team);
 		arrayIndex.push(i);
+		
+		countries[i].players = GetRandomOrder(countries[i].players.length, countries[i].players);
 	}
 	
 	DistributeTeamPlayers();
